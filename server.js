@@ -1,8 +1,8 @@
 const express = require("express");
-const https = require('https');
+const http = require('http');
 const { SocketAddress } = require("net");
 const app = express();
-const server = https.createServer(app);
+const server = http.createServer(app);
 const io = require("socket.io")(server, {cors:{origin:"*"}});
 
 app.set('view engine', 'ejs');
