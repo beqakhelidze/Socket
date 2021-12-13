@@ -1,8 +1,12 @@
 const express = require("express");
-const http = require('http');
-const { SocketAddress } = require("net");
+const https = require('https');
+const path = require("path");
+const fs = require("fs");
+// const { SocketAddress } = require("net");
 const app = express();
-const server = http.createServer(app);
+const server = https.createServer({
+                                    key: "", cert: ""
+                                    },app);
 const io = require("socket.io")(server, {cors:{origin:"*"}});
 
 app.set('view engine', 'ejs');
@@ -23,6 +27,6 @@ io.on("connection", (socket,res) =>{
     socket.emit("userId", socket.id);
 })
 
-server.listen(8080, () =>{
+server.listen(3443, () =>{
     console.log("connected");
 })

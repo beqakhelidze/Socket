@@ -17,7 +17,7 @@
 
 <script>
 
-    const socket = io('https://chatsocket-2qszf.ondigitalocean.app:8080');
+    const socket = io('localhost:8080');
 
     socket.on("userId", (data) =>{
         document.querySelector(".id").innerHTML = data;
@@ -26,7 +26,7 @@
     socket.on("connection");
 
     socket.on('message', function(data){
-        document.querySelector(".received").innerHTML = data;
+        document.getElementById("message_container").innerHTML = data;
     })
 
     const sendMessage = () =>{
