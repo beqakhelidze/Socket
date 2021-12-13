@@ -23,6 +23,6 @@ io.on("connection", (socket,res) =>{
     socket.emit("userId", socket.id);
 })
 
-server.listen(3000, () =>{
+server.listen(8080, () =>{
     console.log("connected");
 })
