@@ -17,7 +17,7 @@
 
 <script>
 
-    const socket = io('localhost:8080');
+    const socket = io('http://chatsocket-2qszf.ondigitalocean.app:3443');
 
     socket.on("userId", (data) =>{
         document.querySelector(".id").innerHTML = data;
