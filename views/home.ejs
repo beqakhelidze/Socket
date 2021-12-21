@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
 </head>
 <body>
     <h1 class="id"></h1>
@@ -13,3 +14,27 @@
     <div id="message_container"></div> 
 </body>
 </html>
+
+<script>
+
+    const socket = io('https://khelidzesocket.herokuapp.com/');
+
+    socket.on("userId", (data) =>{
+        document.querySelector(".id").innerHTML = data;
+    })
+
+    socket.on("connection");
+
+    socket.on('message', function(data){
+        document.getElementById("message_container").innerHTML = data;
+    })
+
+    const sendMessage = () =>{
+        socket.emit("message", document.querySelector(".message").value, document.querySelector(".room").value);
+    }
+
+    document.querySelector(".sender").addEventListener("click", ()=>{
+        sendMessage()
+    });
+
+</script>
